@@ -1,1 +1,3 @@
-depcharge.configure_project()
+function update()
+    depcharge.configure_project()
+end

@@ -1,0 +1,37 @@
+{
+    "$schema": "depcharge_schema.json",
+    "project_name": "ExampleProject",
+    "version": "1.0.0",
+    "dependencies": [
+      {
+        "name": "UtilityLibrary",
+        "type": "git",
+        "url": "https://github.com/example/utility-library.git",
+        "version": "tag:v2.0",
+        "required_version": true,
+        "installation": "local"
+      },
+      {
+        "name": "LocalTool",
+        "type": "path",
+        "path": "../LocalTool",
+        "installation": "local"
+      },
+      {
+        "name": "FileExchangeTool",
+        "type": "zip",
+        "url": "https://www.mathworks.com/matlabcentral/fileexchange/download.zip",
+        "installation": "global"
+      },
+      {
+        "name": "SpecialSnowflake",
+        "type": "git",
+        "url": "https://github.com/example/special-snowflake.git",
+        "version": "branch:main",
+        "installation_script": "install_special_snowflake.m"
+      }
+    ],
+    "global_installation_directory": "C:/MatlabTools",
+    "allow_later_versions": false,
+    "recursive_dependencies": true
+  }

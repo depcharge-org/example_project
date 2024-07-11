@@ -1,0 +1,46 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "project_name": { "type": "string" },
+      "version": { "type": "string" },
+      "dependencies": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "type": { "enum": ["git", "path", "zip"] },
+            "url": { "type": "string" },
+            "path": { "type": "string" },
+            "version": { "type": "string" },
+            "required_version": { "type": "boolean" },
+            "installation": { "enum": ["local", "global"] },
+            "installation_script": { "type": "string" }
+          },
+          "required": ["name", "type"],
+          "if": {
+            "properties": { "type": { "const": "git" } }
+          },
+          "then": {
+            "required": ["url"]
+          },
+          "else": {
+            "if": {
+              "properties": { "type": { "const": "path" } }
+            },
+            "then": {
+              "required": ["path"]
+            },
+            "else": {
+              "required": ["url"]
+            }
+          }
+        }
+      },
+      "global_installation_directory": { "type": "string" },
+      "allow_later_versions": { "type": "boolean" },
+      "recursive_dependencies": { "type": "boolean" }
+    },
+    "required": ["project_name", "version", "dependencies"]
+  }
